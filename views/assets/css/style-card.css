@@ -1,0 +1,33 @@
+#card{
+    background-color: #313945;
+    margin: 1rem;
+    width: 600px;
+    padding: auto;
+   
+   
+}
+#titulo{
+    color:#FFA900;
+    font: 2.5em sans-serif;
+}
+#descripcion{
+    color: white;
+}
+#fecha{
+    color: #FFA900;
+    font-size: 0.8rem;
+    
+}
+#img{
+    margin-top: 2rem;
+    width: auto;
+    height: 10rem;
+    
+}
+#tittle{
+    text-align: center;
+}
+
+#fondo{
+    background-color:#313945 ;
+}
