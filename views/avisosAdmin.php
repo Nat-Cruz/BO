@@ -229,7 +229,7 @@
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="assets/jquery/jquery.min.js"></script>
+   
     <script src="assets/js/avisoAdmin.js"></script>
     
    

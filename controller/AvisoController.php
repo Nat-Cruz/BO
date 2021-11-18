@@ -61,6 +61,7 @@ require_once '../modelo/modelAviso.php';
             }
 
     break;
+    
   
     case 'DELETE':
         $id=$_GET['id'];

@@ -189,23 +189,21 @@ function addAviso(){
      form.append('tipo',tipo.value);
      form.append('unidad',unidad.value);
     
-     $.ajax({                                         
-        url: url,                    
-        data: form,
-        type: 'POST',
-        dataType: 'json',
-        processData: false, 
-        contentType: false,
-        success: function(response){
-            console.log(response.data);
-		getAviso();
-		clearForm();
-        alert("Datos agregado correctamente");
-        },
-        error: function(){
-            console.log('Error');
-        }
-    }); 
+     axios({
+        method:'POST',
+        url:url,
+        responseType:'json',
+        data:form
+        
+    }).then(res=>{
+        console.log(res.data);
+        getAviso();
+        clearForm();
+        alert("Dato agregado correctamente");
+    }).catch(error=>{
+      
+        alert("No se pudo registar ");
+    }) 
  
  }
 
@@ -237,23 +235,21 @@ function editAviso(){
      form.append('fechaF',fechaF.value);
      form.append('tipo',tipo.value);
      form.append('unidad',unidad.value);
-    $.ajax({                                         
-        url: url,                    
-        data: form,
-        type: 'POST',
-        dataType: 'json',
-        processData: false, 
-        contentType: false,
-        success: function(response){
-            console.log(response.data);
-		getAviso();
-		 clearForm();
-        alert("Datos actualizados correctamente");
-        },
-        error: function(){
-            console.log('Error');
-        }
-    });
+     axios({
+        method:'POST',
+        url:url,
+        responseType:'json',
+        data:form
+        
+    }).then(res=>{
+        console.log(res.data);
+        getAviso();
+        clearForm();
+        alert("Dato actualizado correctamente");
+    }).catch(error=>{
+      
+        alert("No se pudo actualizar"+error);
+    }) 
  }
 
 //CONFIRM DELETE

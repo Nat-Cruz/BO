@@ -30,10 +30,6 @@ $response = (isset($_REQUEST['res'])?$_REQUEST['res']:"");
  
  
 $slide =$obj->carousel();
-$avisos = $obj->vistaAvisos();
-$memu =$obj->memu();
-$avpage=$obj->avisosAll();
-$memupage = $obj->memuAll();
 
 
 //echo json_encode($memupage);

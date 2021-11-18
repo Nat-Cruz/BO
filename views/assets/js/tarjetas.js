@@ -4,7 +4,7 @@ const av =document.querySelector('#avisos');
 const memo =document.querySelector('#memu');
 const nombre = document.querySelector('#titulo');
 const memu =document.querySelector('#memu');
-const  modal= document.querySelector('#modal')
+const modal= document.querySelector('#modal')
 
 
 //GET TARJETAS
@@ -24,7 +24,7 @@ function getAvisos(){
                 <div class="card mb-3"  id="card">
                     <div class="row g-0">
                         <div class="col-md-4">
-                            <img src="../../views/images/${key.imagen}"  class='card-img-top img-fluid' alt='Card image cap'>
+                            <img src="./images/${key.imagen}"  class='card-img-top img-fluid' id="img" alt='Card image cap'>
                         </div>
                         <div class="col-md-6">
                             <h5 class='card-title' id="titulo">${key.nombre}</h5>
@@ -45,7 +45,7 @@ function getAvisos(){
                 <div class="card mb-3"  id="card">
                 <div class="row g-0">
                     <div class="col-md-4">
-                        <img src="../../views/images/${key.imagen}"  class='card-img-top img-fluid' alt='Card image cap'>
+                        <img src="./images/${key.imagen}"  class='card-img-top img-fluid' id="img" alt='Card image cap'>
                     </div>
                     <div class="card-body">
                         <h5 class='card-title' id="titulo">${key.nombre}</h5>
@@ -84,7 +84,7 @@ function getMemu(){
                 <div class="card mb-3"  id="card">
                     <div class="row g-0">
                         <div class="col-md-4">
-                            <img src="../../views/images/${key.imagen}"  class='card-img-top img-fluid' alt='Card image cap'>
+                            <img src="./images/${key.imagen}"  class='card-img-top img-fluid' id="img" alt='Card image cap'>
                         </div>
                         <div class="col-md-6">
                             <h5 class='card-title' id="titulo">${key.nombre}</h5>
@@ -105,7 +105,7 @@ function getMemu(){
                 <div class="card mb-3"  id="card">
                 <div class="row g-0">
                     <div class="col-md-4">
-                        <img src="../../views/images/${key.imagen}" class='card-img-top img-fluid' alt='Card image cap'>
+                        <img src="./images/${key.imagen}" class='card-img-top img-fluid' id="img" style='heigth=10rem'; alt='Card image cap'>
                     </div>
                     <div class="col-md-6">
                         <h5 class='card-title' id="titulo">${key.nombre}</h5>
@@ -145,7 +145,7 @@ function autocomplete(titulo,archivo,descripcion,fecha_inicio,fecha_fin){
                     <div class="row justify-content-center">
                         <div class="col-lg-12" >
                             <h5 class="card-title text-center text-Dark" id="titulo" ></h5>
-                            <img src="../../views/images/${archivo}"  class='card-img-top img-fluid' alt='Card image cap'>
+                            <img src="./images/${archivo}"  class='card-img-top img-fluid' alt='Card image cap'>
                             <p class='card-text' id="descripcion">${descripcion}
                             <br><small id="fecha">Inicia : ${fecha_inicio} Finaliza : ${fecha_fin}</small></p>
                             <div class="form-group row">
@@ -176,7 +176,7 @@ function autocompleteArchivo(titulo,archivo,descripcion,fecha_inicio,fecha_fin){
                             <div class="card-body">
                             <h5 class="card-title text-center text-Dark" id="titulo" value=""></h5>
                             <p class='card-text'id="descripcion">${descripcion}
-                            <iframe src="../../views/archivos/${archivo}" width="100%" height="500" style="border:none;">
+                            <iframe src="./archivos/${archivo}" width="100%" height="500" style="border:none;">
                             </iframe>
                             <br><small id="fecha">Inicia : ${fecha_inicio} Finaliza : ${fecha_fin}</small></p>
                         </div>
