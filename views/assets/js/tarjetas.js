@@ -23,8 +23,9 @@ function getAvisos(){
                 av.innerHTML+=`
                 <div class="card mb-3"  id="card">
                     <div class="row g-0">
-                        <div class="col-md-4">
-                            <img src="./images/${key.imagen}"  class='card-img-top img-fluid' id="img" alt='Card image cap'>
+                    
+                        <div class="col-md-4" id="img">
+                            <img src="./images/${key.imagen}"  class='img-fluid'  style="height:10rem" alt='Card image cap'>
                         </div>
                         <div class="col-md-6">
                             <h5 class='card-title' id="titulo">${key.nombre}</h5>
@@ -33,8 +34,8 @@ function getAvisos(){
                             </p>
                             
                         </div>
-                        <div class="col-md-2 mt-5">
-                        <button type="submit" class="btn btn-success" onclick="autocomplete('${key.nombre}',
+                        <div class="col-md-2 " id="btn" >
+                        <button type="submit" id="btn" class="btn btn-success" onclick="autocomplete('${key.nombre}',
                         '${key.archivo}','${key.descripcion}','${key.fecha_inicio}','${key.fecha_fin}');" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fas fa-eye color-secondary" m-r-5></i> Ver</button>
                         </div>
                     </div>    
@@ -44,17 +45,17 @@ function getAvisos(){
                 av.innerHTML+=`
                 <div class="card mb-3"  id="card">
                 <div class="row g-0">
-                    <div class="col-md-4">
-                        <img src="./images/${key.imagen}"  class='card-img-top img-fluid' id="img" alt='Card image cap'>
+                    <div class="col-md-4" id="img">
+                        <img src="./images/${key.imagen}"  class='img-fluid' style="height:10rem"  alt='Card image cap'>
                     </div>
-                    <div class="card-body">
+                    <div class="col-md-6">
                         <h5 class='card-title' id="titulo">${key.nombre}</h5>
                         <p class='card-text'id="descripcion">${key.descripcion}
                         <br><small id="fecha">Inicia : ${key.fecha_inicio} Finaliza : ${key.fecha_fin}</small>
                         </p>
                         
                     </div>
-                    <div class="col-md-2 mt-5">
+                    <div class="col-md-2" id="btn" >
                     <button type="submit" class="btn btn-success" onclick="autocompleteArchivo('${key.nombre}',
                     '${key.archivo}','${key.descripcion}','${key.fecha_inicio}','${key.fecha_fin}')" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fas fa-eye color-secondary" m-r-5></i> Ver</button>
                     </div>
@@ -83,8 +84,8 @@ function getMemu(){
                 memu.innerHTML+=`
                 <div class="card mb-3"  id="card">
                     <div class="row g-0">
-                        <div class="col-md-4">
-                            <img src="./images/${key.imagen}"  class='card-img-top img-fluid' id="img" alt='Card image cap'>
+                        <div class="col-md-4" id="img" >
+                            <img src="./images/${key.imagen}"  class='img-fluid ' style="height:10rem" alt='Card image cap'>
                         </div>
                         <div class="col-md-6">
                             <h5 class='card-title' id="titulo">${key.nombre}</h5>
@@ -93,8 +94,8 @@ function getMemu(){
                             </p>
                             
                         </div>
-                        <div class="col-md-2 mt-5">
-                        <button type="submit" class="btn btn-success" onclick="autocomplete('${key.nombre}',
+                        <div class="col-md-2 " id="btn" >
+                        <button type="submit"  class="btn btn-success" onclick="autocomplete('${key.nombre}',
                         '${key.archivo}','${key.descripcion}','${key.fecha_inicio}','${key.fecha_fin}');" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fas fa-eye color-secondary" m-r-5></i> Ver</button>
                         </div>
                     </div>    
@@ -104,8 +105,8 @@ function getMemu(){
                 memu.innerHTML+=`
                 <div class="card mb-3"  id="card">
                 <div class="row g-0">
-                    <div class="col-md-4">
-                        <img src="./images/${key.imagen}" class='card-img-top img-fluid' id="img" style='heigth=10rem'; alt='Card image cap'>
+                    <div class="col-md-4" id="img">
+                        <img src="./images/${key.imagen}" class='img-fluid '   style="height:10rem" alt='Card image cap'>
                     </div>
                     <div class="col-md-6">
                         <h5 class='card-title' id="titulo">${key.nombre}</h5>
@@ -114,7 +115,7 @@ function getMemu(){
                         </p>
                     
                      </div>
-                    <div class="col-md-2 mt-5">
+                    <div class="col-md-2 " id="btn" >
                     <button type="submit" class="btn btn-success" onclick="autocompleteArchivo('${key.nombre}',
                     '${key.archivo}','${key.descripcion}','${key.fecha_inicio}','${key.fecha_fin}')" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fas fa-eye color-secondary" m-r-5></i> Ver</button>
                     </div>
@@ -150,7 +151,7 @@ function autocomplete(titulo,archivo,descripcion,fecha_inicio,fecha_fin){
                             <br><small id="fecha">Inicia : ${fecha_inicio} Finaliza : ${fecha_fin}</small></p>
                             <div class="form-group row">
                                 <div class="col-lg-8 ml-auto">
-                                    <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>                                                  
+                                    <button type="button" class="btn btn-success btn-lg" data-dismiss="modal">Close</button>                                                  
                                 </div>
                                 </div>
                             </div>
@@ -182,7 +183,7 @@ function autocompleteArchivo(titulo,archivo,descripcion,fecha_inicio,fecha_fin){
                         </div>
                         <div class="form-group row">
                             <div class="col-lg-8 ml-auto">
-                                <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>                                                  
+                                <button type="button" class="btn btn-success btn-lg" data-dismiss="modal">Close</button>                                                  
                             </div>
                         </div>
                     </div>

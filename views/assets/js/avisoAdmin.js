@@ -203,6 +203,7 @@ function addAviso(){
     }).catch(error=>{
       
         alert("No se pudo registar ");
+        console.log(error)
     }) 
  
  }
@@ -248,7 +249,8 @@ function editAviso(){
         alert("Dato actualizado correctamente");
     }).catch(error=>{
       
-        alert("No se pudo actualizar"+error);
+        alert("No se pudo actualizar");
+        console.log(error)
     }) 
  }
 

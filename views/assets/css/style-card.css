@@ -1,14 +1,17 @@
 #card{
     background-color: #313945;
     margin: 1rem;
-    width: 600px;
+    width: 620px;
+    max-width: 620px;
+    max-height: max-content;
     padding: auto;
    
    
 }
+
 #titulo{
     color:#FFA900;
-    font: 2.5em sans-serif;
+    font: 2.2em sans-serif;
 }
 #descripcion{
     color: white;
@@ -18,11 +21,9 @@
     font-size: 0.8rem;
     
 }
-#img{
-    
-   width: 10rem;
-    height: 8.5rem;
-    
+#btn{
+
+    align-self: flex-end;
 }
 #tittle{
     text-align: center;
