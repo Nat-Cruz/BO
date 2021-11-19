@@ -77,6 +77,22 @@
            }
            return $data;
         }
+      //DESCARGAS
+        function getDescargas($unidad){
+            $con = new Conexion();
+            $conexion = $con->conectar();
+            $result =$conexion->query("select d.nombre as titulo, d.archivo , un.nombre ,d.fecha ,d.tipo from descargas d
+            inner join usuario u on d.id_usuario = u.id_usuario
+            inner join unidad un on u.id_unidad = un.id_unidad where u.id_unidad='$unidad'");
+            $data = [];
+           if($result->num_rows > 0){
+                while($row= $result->fetch_assoc()){
+                    array_push($data,$row);
+                }
+           }
+           return $data;
+        
+        }  
 
 
     }

@@ -32,42 +32,56 @@
     <link href="assets/css/style-card.css" rel="stylesheet">
 </head>
 
-<body>
- 
-<div class="container-fluid ">
-    <div class="row mt-0">            
-        <div class="container col-xl-6 " >
-            <div class="row" >               
-                <div class="col-xl-6">
-                  <div class="header-card-content" id="avisos">
-                   
-                  </div>
-              </div>
-            </div>
-        </div>             
-        <div class="container col-xl-6" >  
-           <div class="row" >               
-                <div class="col-xl-6">
-                    <div class="header-card-content" id="memu">
-                    
-                    </div>
-                </div><!--Cierre Columna-->
-            </div>             
-        </div><!--Cierre fila Externa-->
-    </div><!--Cierre fila Externa-->
-</div><!--Cierre fila Externa-->
-                           
 
-</div>
-<!--MODAL-->
-  <div class="bootstrap-modal mt-5" id="modal">
+<body>
+ <!-- /# sidebar -->
+    <div class="content-wrap">
+        <div class="main">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-8 p-r-0 title-margin-right">
+                        <div class="page-header">
+                            <div class="page-title">
+                                <h1>
+                            
+                                </h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /# row -->
+                <section id="main-content">
+                    <div class="row">
+                    <?php 
+                            $id_unidad = $_REQUEST['unidad'];
+                             echo"<input id='id_unidad' name ='id_unidad' type='hidden' value='$id_unidad' class='form-control'>"; ?>
+                                                          
+                        
+                        <!-- /# column -->
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+<div class="container ">  
+    <div class="row mt-0">                 
+        <div class="col-md-6" id="boletines" >  
+                        
+        </div><!--Cierre fila Externa-->
+        <div class="col-md-6" id="formularios" >  
+           
+        </div> 
+    </div><!--Cierre fila Externa-->
     
-  </div>
+</div><!--Cierre fila Externa-->
+
+
+  
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  
-    <script src="assets/js/tarjetas.js"></script>
-  
+	               
    
+    <script src="assets/js/pageDescargas.js"></script>
+
 <!--  Common -->
     <script src="assets/js/lib/jquery.min.js"></script>
     <script src="assets/js/lib/jquery.nanoscroller.min.js"></script>
@@ -76,7 +90,7 @@
     <script src="assets/js/lib/bootstrap.min.js"></script>
     <script src="assets/js/scripts.js"></script>
 <!--  Dashboard 1 -->
-    
+  
 </body>
 
 </html>

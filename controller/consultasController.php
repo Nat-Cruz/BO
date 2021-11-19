@@ -3,6 +3,8 @@ require_once '../modelo/consultasGenerales.php';
 $obj=new Consultas();
 
 $response = (isset($_REQUEST['res'])?$_REQUEST['res']:"");
+$unidad =  (isset($_REQUEST['unidad'])?$_REQUEST['unidad']:"0");
+$unidad =$_REQUEST['unidad'];
  switch($response){
      // Home
     case "tarjetas":
@@ -25,9 +27,15 @@ $response = (isset($_REQUEST['res'])?$_REQUEST['res']:"");
     case "memuPage":
             $data = $obj->memuAll();
             echo  json_encode($data);
-            break;    
+            break; 
+             
  }
  
+ if($unidad !="0"){
+    
+    $data = $obj->getDescargas($unidad);
+    echo  json_encode($data);
+ }
  
 $slide =$obj->carousel();
 

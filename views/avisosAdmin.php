@@ -203,9 +203,9 @@
                                                                 </div>    
                                                         </div>
                                                         <div class="form-group row">
-                                                            <label class="col-lg-2 col-form-label" for="val-username">Descripcion <span class="text-danger">*</span> </label>
+                                                            <label class="col-lg-2 col-form-label" for="val-username">Breve Descripcion <span class="text-danger">*</span> </label>
                                                                 <div class="col-lg-8">
-                                                                    <textarea class="form-control" id="descripcion" name="descripcion" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+                                                                    <textarea class="form-control" id="descripcion" name="descripcion" maxlength="150" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
                                                                 </div>
                                                             </div>
                                                         </div>

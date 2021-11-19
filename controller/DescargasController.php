@@ -18,16 +18,17 @@ switch ($_SERVER['REQUEST_METHOD']) {
          $file = $_FILES['archivo']['name'];
          $id=$_REQUEST['id'];
          $nombre=$_REQUEST['nombre'];
+         $tipo=$_REQUEST['tipo'];
          $fecha=$_REQUEST['fecha'];
          $usuario=$_REQUEST['usuario'];
          if($id == 0){
-            $obj->addDescargas($nombre,$file,$fecha,$usuario);
+            $obj->addDescargas($nombre,$file, $tipo,$fecha,$usuario);
             $arr = array('data'=> $nombre); 
             echo json_encode($arr) ;
 
         }else{
-            $obj->editDescargas($id,$nombre,$file,$fecha,$usuario);
-            $arr = array('data'=> $file);
+            $obj->editDescargas($id,$nombre,$file, $tipo,$fecha,$usuario);
+            $arr = array('data'=> $nombre);
     
              echo json_encode($arr) ;
 

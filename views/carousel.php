@@ -26,12 +26,12 @@
                  
                   echo "
                   <div class='carousel-item $active'>
-                      <img src='../views/images/".$slide[$i]["imagen"]."' class='d-block w-100'  style='height:35rem;' alt='...'>
+                      <img src='../views/images/".$slide[$i]["imagen"]."' class='d-block w-100'  style='height:700px;' alt='...'>
 				                <div class='carousel-caption d-none d-md-block'>
         				          <h1 class='text-dark'>".$slide[$i]["nombre"]."</h1>
-        				          <p class='h4'>".$slide[$i]["descripcion"]."</p>
+        				          <p class='h4' style='color:#FFA900;'>".$slide[$i]["descripcion"]."</p>
                           
-                      <a class='btn btn-success' href='http://localhost/BO/views/archivos/".$slide[$i]["archivo"]."'target='_blank'>Ver Más</a>
+                      <a class='btn btn-success' href='http://10.30.0.28/BO/views/archivos/".$slide[$i]["archivo"]."'target='_blank'>Ver Más</a>
       				          </div>
                         
                   </div>

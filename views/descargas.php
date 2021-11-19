@@ -98,10 +98,10 @@
                             <table class="table table-striped" >
                                 <thead>
                                   <tr>
-                                    <th scope="col">Id</th>
                                     <th scope="col">Nombre de archivo</th>
                                     <th scope="col">Archivo</th>
-				                     <th scope="col">Fecha</th>
+                                    <th scope="col">Tipo</th>
+				                    <th scope="col">Fecha</th>
                                     <th scope="col">Acciones</th>
                                   </tr>
                                 </thead>
@@ -146,6 +146,16 @@
                                                             <input type="file" class="form-control" name ="archivo" id="archivo">
                                                     </div>
                                                     <div class="form-group row">
+                                                            <label class="col-md-2 col-form-label" for="val-skill">Tipo de archivo<span class="text-danger">*</span> </label>
+                                                                <div class="col-md-4">
+                                                                    <select class="form-control" id="tipo" name="tipo">
+                                                                        <option value="0">Seleccionar</option>
+                                                                        <option value="1">Boletín</option>
+                                                                        <option value="2">Formulario</option>
+                                                                    </select>
+                                                                </div>
+                                                    </div>  
+                                                    <div class="form-group row">
                                                             <div class="col-lg-8 ml-auto">
                                                                 <button type="button" name="add" id="#add" onclick="postDescargas()"  class="btn btn-rounded btn-warning">Guardar</button>
                                                                 <button type="button" id="#clear" onclick="clearForm()" class="btn btn-rounded btn-primary" data-dismiss="modal">Close</button>
@@ -163,10 +173,7 @@
             </div>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-	               
-    <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>  
-      
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>   
     <script src="assets/js/descargas.js"></script>
  <!-- Common -->
  <script src="assets/js/lib/jquery.min.js"></script>

@@ -18,13 +18,13 @@
         }
         
           //INSERTAR
-           function addDescargas($nombre,$file,$fecha,$usuario){
+           function addDescargas($nombre,$file,$tipo,$fecha,$usuario){
                 try {
                     $con= new Conexion();
                     $conexion=$con->conectar();
                     $sql = $conexion->prepare("insert into descargas
-                    (id_descargas,nombre,archivo,fecha,id_usuario)
-                    values(0,'$nombre','$file','$fecha','$usuario')");
+                    (id_descargas,nombre,archivo,tipo,fecha,id_usuario)values
+                    (0,'$nombre','$file','$tipo','$fecha','$usuario')");
                     $sql->execute();
 
                 } catch (Exception $th) {
@@ -37,11 +37,11 @@
 
      
     //ACTUALIZAR
-    function editDescargas($id,$nombre,$file,$fecha,$usuario){
+    function editDescargas($id,$nombre,$file,$tipo,$fecha,$usuario){
         try {
             $con= new Conexion();
             $conexion=$con->conectar();
-            $sql=$conexion->prepare("update descargas set nombre='$nombre',archivo='$file',fecha='$fecha',id_usuario='$usuario' where id_descargas='$id'"); 
+            $sql=$conexion->prepare("update descargas set nombre='$nombre',archivo='$file',tipo='$tipo',fecha='$fecha',id_usuario='$usuario' where id_descargas='$id'"); 
             $sql->execute();
             
         } catch (Exception $th) {
