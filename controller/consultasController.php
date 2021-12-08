@@ -4,7 +4,7 @@ $obj=new Consultas();
 
 $response = (isset($_REQUEST['res'])?$_REQUEST['res']:"");
 $unidad =  (isset($_REQUEST['unidad'])?$_REQUEST['unidad']:"0");
-$unidad =$_REQUEST['unidad'];
+//$unidad =$_REQUEST['unidad'];
  switch($response){
      // Home
     case "tarjetas":
@@ -40,5 +40,5 @@ $unidad =$_REQUEST['unidad'];
 $slide =$obj->carousel();
 
 
-//echo json_encode($memupage);
+echo json_encode($memupage);
 ?>

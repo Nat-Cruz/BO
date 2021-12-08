@@ -76,14 +76,26 @@ return user={
 }
 //VALIDATION FORM
 function validateForm(user){
+    alert=Swal.fire({
+        title:"Notifación!",
+        text: "Todos los datos son requeridos",
+        icon: "warning",
+        button:"Ok",
+    });
+    console.log(user.unidad);
     if(user.nombre ===""|| user.clave===""){
-        return "Todos los campos son obligatorios";
+        return alert;
     }
-    if(user.tipo === "0" || user.unidad==="0"){
-        return "Debe seleccionar una opcion";
+    if(user.unidad === "" || user.tipo===""){
+        return alert;
     }
     if(user.clave != user.reclave ){
-        return "Las contraseñas deben ser iguales ";
+        return alert=Swal.fire({
+            title:"Notifación!",
+            text: "Las contraseñas deben ser iguales",
+            icon: "warning",
+            button:"Ok",
+        });
     }
     return null;
 }
@@ -130,11 +142,21 @@ function addUser(){
         console.log(res.data);
         getUser();
         clearForm();
-        alert("Usuario agregado correctamente");
+        Swal.fire({
+            title:"Notifación!",
+            text: "Datos agregados correctamente",
+            icon: "success",
+            button:"Ok",
+        })
     }).catch(error=>{
-      
-        alert("No se pudo registar al usuario");
-    })
+        Swal.fire({
+            title:"Notifación!",
+            text: "Ocurrio un error",
+            icon: "warning",
+            button:"Ok",
+        })
+        console.log(error)
+    }) 
     
 }
 //EDIT
@@ -149,20 +171,43 @@ function editUser(){
         console.log(res.data);
         getUser();
         clearForm();
-        alert("Datos actualizados correctamente");
+        Swal.fire({
+            title:"Notifación!",
+            text: "Datos actualizados correctamente",
+            icon: "success",
+            button:"Ok",
+        })
     }).catch(error=>{
-      
-        alert("No se pudo actualizar los datos");
-    })
+        Swal.fire({
+            title:"Notifación!",
+            text: "Ocurrio un error",
+            icon: "warning",
+            button:"Ok",
+        })
+        console.log(error)
+    }) 
 }
 
 //CONFIRM DELETE
-const confirmDeleteUser = (id,tipo) => {
-    event.preventDefault();
-  
-    let res = confirm("Eliminar usuario");
-    if (res) deleteUser(id,tipo);
-  }
+const confirmDelete= async function (id,tipo) {
+      
+    const sweetConfirm = await Swal.fire({
+        title: 'Estás seguro de eliminar los datos?',
+        text: "No podrás reviertir esta acción !",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, elimninar!',
+        cancelButtonText: "Cancelar",
+        closeOnConfirm: false,
+        closeOnCancel: false
+    });
+    
+   if (sweetConfirm.isConfirmed) deleteAviso(id,tipo);
+    
+    
+}
 //DELETE
 function deleteUser(id,tipo){
     
@@ -179,11 +224,22 @@ function deleteUser(id,tipo){
             console.log(res.data);
             getUser();
             clearForm();
-            alert("Datos eliminados correctamente");
-        }).catch(error=>{
-          
-            alert("No se eliminaron los datos");
-        })
+            Swal.fire({
+                title:"Notifación!",
+                text: "Datos eliminados correctamente",
+                icon: "success",
+                button:"Ok",
+            })
+         }).catch(error=>{
+           
+             console.log("No se eliminaron los datos"+erro);
+             Swal.fire({
+                title:"Notifación!",
+                text: "Ocurrio un error",
+                icon: "warning",
+                button:"Ok",
+            })
+         })
     }
    
     

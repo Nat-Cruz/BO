@@ -1,5 +1,5 @@
 //URL
-const url='http://10.30.0.28/BO/controller/UnidadController.php';
+const url='http://localhost/BO/controller/UnidadController.php';
 //TABLE
 const tbl=document.querySelector('#tbl');
 //BUTTONS
@@ -78,7 +78,12 @@ function getForm(){
 //VALIDATION FORM
 function validateForm(unidad){
     if(unidad.nombre ===""|| unidad.descripcion===""){
-        return "Todos los campos son obligatorios";
+        return alert=Swal.fire({
+            title:"Notifación!",
+            text: "Todos los datos son requeridos",
+            icon: "warning",
+            button:"Ok",
+        });
     }
     
     return null;
@@ -124,11 +129,21 @@ function addUnidad(){
         console.log(res.data);
         getUnidad();
         clearForm();
-        alert("Datos guardados correctamente");
+        Swal.fire({
+            title:"Notifación!",
+            text: "Datos agregados correctamente",
+            icon: "success",
+            button:"Ok",
+        })
     }).catch(error=>{
-      
-        alert("No se guardaron los datos");
-    })
+        Swal.fire({
+            title:"Notifación!",
+            text: "Ocurrio un error",
+            icon: "warning",
+            button:"Ok",
+        })
+        console.log(error)
+    }) 
     
 }
 //EDIT
@@ -143,19 +158,42 @@ function editUnidad(){
         console.log(res.data);
         getUnidad();
         clearForm();
-        alert("Datos actualizados correctamente");
+        Swal.fire({
+            title:"Notifación!",
+            text: "Datos actualizados correctamente",
+            icon: "success",
+            button:"Ok",
+        })
     }).catch(error=>{
-      
-        alert("No se pudo actualizar los datos");
-    })
+        Swal.fire({
+            title:"Notifación!",
+            text: "Ocurrio un error",
+            icon: "warning",
+            button:"Ok",
+        })
+        console.log(error)
+    }) 
 }
 //CONFIRM DELETE
-const confirmDelete = (id) => {
-    event.preventDefault();
-  
-    let res = confirm("¿Desea eliminar esta unidad?");
-    if (res) deleteUnidad(id);
-  }
+const confirmDelete= async function (id) {
+      
+    const sweetConfirm = await Swal.fire({
+        title: 'Estás seguro de eliminar los datos?',
+        text: "No podrás reviertir esta acción !",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, elimninar!',
+        cancelButtonText: "Cancelar",
+        closeOnConfirm: false,
+        closeOnCancel: false
+    });
+    
+   if (sweetConfirm.isConfirmed) deleteUnidad(id);
+    
+    
+}
 //DELETE
 function deleteUnidad(id){
     axios({
@@ -167,10 +205,21 @@ function deleteUnidad(id){
          console.log(res.data);
          getUnidad();
          clearForm();
-         alert("Datos eliminados correctamente");
+         Swal.fire({
+            title:"Notifación!",
+            text: "Datos eliminados correctamente",
+            icon: "success",
+            button:"Ok",
+        })
      }).catch(error=>{
        
-         alert("No se eliminaron los datos");
+         console.log("No se eliminaron los datos"+erro);
+         Swal.fire({
+            title:"Notifación!",
+            text: "Ocurrio un error",
+            icon: "warning",
+            button:"Ok",
+        })
      })
      
  }

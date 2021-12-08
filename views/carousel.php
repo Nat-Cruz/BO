@@ -6,11 +6,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
-    integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+  <link rel="icon" href="http://10.30.0.28/wp-content/themes/Divi/images/logo.png">
     <link href="assets/css/style-card.css" rel="stylesheet">
-  <title>Ministerio de Cultura</title>
+    <link href="assets/css/lib/font-awesome.min.css" rel="stylesheet">
+    <link href="assets/css/lib/themify-icons.css" rel="stylesheet">
+    <link href="assets/css/lib/menubar/sidebar.css" rel="stylesheet">
+    <link href="assets/css/lib/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/lib/helper.css" rel="stylesheet"><title>Ministerio de Cultura</title>
 </head>
 
 <body>
@@ -31,7 +33,7 @@
         				          <h1 class='text-dark'>".$slide[$i]["nombre"]."</h1>
         				          <p class='h4' style='color:#FFA900;'>".$slide[$i]["descripcion"]."</p>
                           
-                      <a class='btn btn-success' href='http://10.30.0.28/BO/views/archivos/".$slide[$i]["archivo"]."'target='_blank'>Ver Más</a>
+                      <a class='btn btn-success btn-lg' style='border-radius:23px;' href='http://10.30.0.28/BO/views/archivos/".$slide[$i]["archivo"]."'target='_blank'>Ver Más</a>
       				          </div>
                         
                   </div>
@@ -48,9 +50,7 @@
       <span class="sr-only">Next</span>
     </a>
   </div>
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  
-  <script src="assets/js/carrusel.js"></script>
+ 
   <!-- Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">

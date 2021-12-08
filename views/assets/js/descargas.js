@@ -85,12 +85,18 @@ return obj={
 }
 //VALIDATION FORM
 function validateForm(obj){
-    if(obj.nombre ===""|| obj.archivo===""){
-        return "Todos los campos son obligatorios";
+    alert=Swal.fire({
+        title:"Notifación!",
+        text: "Todos los datos son requeridos",
+        icon: "warning",
+        button:"Ok",
+    });
+    if(obj.nombre ==="" || obj.archivo==="" || obj.tipo===""){
+       return alert;
+        
     }
-    
-    
-    return null;
+        return null;
+     
 }
 //CLEAR FORM
 const clearForm = (closeModal = false) => {
@@ -150,10 +156,20 @@ function addDescargas(){
         console.log(res.data);
         getDescargas();
         clearForm();
-        alert("Dato agregado correctamente");
+        Swal.fire({
+            title:"Notifación!",
+            text: "Datos agregados correctamente",
+            icon: "success",
+            button:"Ok",
+        })
     }).catch(error=>{
       
-        alert("No se pudo registar ");
+        Swal.fire({
+            title:"Notifación!",
+            text: "Ocurrio un error",
+            icon: "warning",
+            button:"Ok",
+        })
         console.log(error)
     })  
 }
@@ -165,7 +181,6 @@ function editDescargas(){
     var archivo = file.files[0];
     var id = idDescarga.value;
     var nombre=document.getElementById('nombre');
-    form.append('tipo',tipo.value);
     var usuario=document.getElementById('id_usuario');
     var form = new FormData;
     form.append('id',id);
@@ -185,22 +200,44 @@ function editDescargas(){
         console.log(res.data);
         getDescargas();
         clearForm();
-        alert("Dato agregado correctamente");
+        Swal.fire({
+            title:"Notifación!",
+            text: "Datos modificados correctamente",
+            icon: "success",
+            button:"Ok",
+        })
     }).catch(error=>{
-      
-        alert("No se pudo registar ");
+        Swal.fire({
+            title:"Notifación!",
+            text: "Ocurrio un error",
+            icon: "warning",
+            button:"Ok",
+        })
         console.log(error)
     })  
     
 }
 
 //CONFIRM DELETE
-const confirmDelete = (id) => {
-    event.preventDefault();
-  
-    let res = confirm("Eliminar dato");
-    if (res) deleteDescargas(id);
-  }
+  const confirmDelete= async function (id) {
+      
+    const sweetConfirm = await Swal.fire({
+        title: 'Estás seguro de eliminar los datos?',
+        text: "No podrás reviertir esta acción !",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, elimninar!',
+        cancelButtonText: "Cancelar",
+        closeOnConfirm: false,
+        closeOnCancel: false
+    });
+    
+   if (sweetConfirm.isConfirmed) deleteDescargas(id);
+    
+    
+}
 //DELETE
 function deleteDescargas(id){
    axios({
@@ -212,7 +249,12 @@ function deleteDescargas(id){
         console.log(res.data);
         getDescargas();
         clearForm();
-        alert("Datos eliminados correctamente");
+        Swal.fire({
+            title:"Notifación!",
+            text: "Datos eliminados correctamente",
+            icon: "success",
+            button:"Ok",
+        })
     }).catch(error=>{
       
         alert("No se eliminaron los datos");

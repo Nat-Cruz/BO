@@ -1,8 +1,7 @@
 //URL
 const url = "http://10.30.0.28/BO/controller/consultasController.php?unidad=";
 //TABLE
-const bol = document.querySelector('#boletines');
-const form = document.querySelector('#formularios');
+const tbl = document.querySelector('#tbl');
 
 //INPUT
 const idDescarga= document.querySelector('#id_descarga');
@@ -22,19 +21,18 @@ function getDescargas(){
         responseType:'json'
         
     }).then(res=>{
-        bol.innerHTML="";
-        form.innerHTML="";
+        tbl.innerHTML="";
         const desc=res.data;
         console.log(desc);
         desc.forEach(key => {
             if(key.tipo == 1){
                 var txttipo ="Boletín";
                 console.log(key.tipo);
-                bol.innerHTML +=`
+                tbl.innerHTML +=`
                 <div class="card mb-3" style="max-width: 350px;">
                 <div class="row g-0">
                     <div class="col-md-3 mt-0">
-                      <img src="./images/boletin.png"  class="img-fluid rounded-start" alt="...">
+                      <img src="./images/44boletin-informativo.png"  class="img-fluid rounded-start" alt="...">
                     </div>
                     <div class="col-md-6">
                         <div class="card-body">
@@ -45,7 +43,7 @@ function getDescargas(){
                        
                     </div>
                     <div class="col-md-2" id="btn">
-                            <a class='btn btn-success' href='http://localhost/BO/views/archivos/${key.archivo}' target='_blank' title='ver'><i class="fas fa-eye color-secondary" m-r-5></i></a>
+                            <a class='btn btn-success' href='http://10.30.0.28/BO/views/archivos/${key.archivo}' target='_blank' title='ver'><i class="fas fa-eye color-secondary" m-r-5></i></a>
                         </div>
                 </div>
             </div>
@@ -54,11 +52,11 @@ function getDescargas(){
             }else if(key.tipo == 2){
                 console.log(key.tipo);
                 var txttipo ="Formulario";
-                form.innerHTML +=`
+                tbl.innerHTML +=`
             <div class="card mb-3" style="max-width: 350px;">
                 <div class="row g-0">
                     <div class="col-md-3 mt-0">
-                      <img src="./images/formulario.png"  class="img-fluid rounded-start" alt="...">
+                      <img src="./images/361formulario.png"  class="img-fluid rounded-start" alt="...">
                     </div>
                     <div class="col-md-6">
                         <div class="card-body">
@@ -69,7 +67,7 @@ function getDescargas(){
                        
                     </div>
                     <div class="col-md-2" id="btn">
-                            <a class='btn btn-success' href='http://localhost/BO/views/archivos/${key.archivo}' target='_blank' title='ver'><i class="fas fa-eye color-secondary" m-r-5></i></a>
+                            <a class='btn btn-success' href='http://10.30.0.28/BO/views/archivos/${key.archivo}' target='_blank' title='ver'><i class="fas fa-eye color-secondary" m-r-5></i></a>
                         </div>
                 </div>
             </div>

@@ -19,7 +19,8 @@ const nivel = document.querySelector('#nivel');
 const btncerrar = document.querySelector('#cerrar');
 //BUTTONS
 const add= document.querySelector('#add');
-const keyUnidad =txtunidad.value;
+var keyUnidad ="";
+keyUnidad =txtunidad.value;
 console.log(keyUnidad);
 console.log(txtid.value);
 //OBETER AVISOS
@@ -52,7 +53,6 @@ function getAviso(){
                 <td>${key.nombre}</td>
                 <td>${key.imagen}</td>
                 <td>${key.archivo}</td>
-                <td>${key.descripcion}</td>
                 <td>${estado}</td> 
                 <td>${key.fecha_inicio}</td> 
                 <td>${key.fecha_fin}</td> 
@@ -106,25 +106,53 @@ function getForm(){
 }   
 //VALIDATION FORM
 function validateForm(aviso){
+    var img = document.getElementById('imagen');
+    var imagen = img.files[0];
+    alert=Swal.fire({
+        title:"Notifación!",
+        text: "Todos los datos son requeridos",
+        icon: "warning",
+        button:"Ok",
+    });
     if(aviso.nombre ===""||  aviso.descripcion===""){
-        return "Todos los campos son obligatorios";
+        return alert;
+
     }
-    if(aviso.tipo === "0" || aviso.estado==="0"){
-        return "Debe seleccionar una opcion";
+    if(aviso.tipo === "" || aviso.estado===""){
+        return alert;
+
     }
     if(aviso.fechaI===""|| aviso.fechaF ===""){
-        return "Los campos fechas son obligatorios";
+        return alert;
+
     }
     if(aviso.fechaI > aviso.fechaF ){
-        return "Las fechas de fin esta incorrecta";
-    }
-    if(!aviso.imagen){
-        return "Todos los campos son obligatorios";
-    }
-    if(!aviso.archivo){
-        return "Todos los campos son obligatorios";
+        return alert=Swal.fire({
+            title:"Notifación!",
+            text: "Las fechas de finalización son incorrectas",
+            icon: "warning",
+            button:"Ok",
+        });
     }
     
+    if(!aviso.imagen){
+        return alert;
+
+    }
+    if(!aviso.archivo){
+        return alert;
+
+    }
+    if(!(/\.(jpg|png|gif)$/i).test(imagen.name)){
+        return alert=Swal.fire({
+            title:"Notifación!",
+            text: "Comprueba la extensión de tus imágenes, recuerda que los formatos aceptados son .gif, .jpeg, .jpg y .png",
+            icon: "warning",
+            button:"Ok",
+        });
+    }
+    
+   
     return null;
 }
 //CLEAR FORM
@@ -175,35 +203,44 @@ function addAviso(){
     var fechaF=document.getElementById('fechaF');
     var tipo= document.getElementById('tipo');
     var unidad=document.getElementById('id_unidad');
-    
     var form = new FormData();
-     form.append('result','result');
-     form.append('archivo',archivo);
-     form.append('imagen',imagen);
-     form.append('id',id);
-     form.append('nombre',nombre.value);
-     form.append('descripcion',descripcion.value);
-     form.append('estado',estado.value);
-     form.append('fechaI',fechaI.value);
-     form.append('fechaF',fechaF.value);
-     form.append('tipo',tipo.value);
-     form.append('unidad',unidad.value);
-     axios({
-        method:'POST',
-        url:url,
-        responseType:'json',
-        data:form
-        
-    }).then(res=>{
-        console.log(res.data);
-        getAviso();
-        clearForm();
-        alert("Dato agregado correctamente");
-    }).catch(error=>{
-      
-        alert("No se pudo registar ");
-        console.log(error)
-    })  
+   
+    form.append('result','result');
+    form.append('archivo',archivo);
+    form.append('imagen',imagen);
+    form.append('id',id);
+    form.append('nombre',nombre.value);
+    form.append('descripcion',descripcion.value);
+    form.append('estado',estado.value);
+    form.append('fechaI',fechaI.value);
+    form.append('fechaF',fechaF.value);
+    form.append('tipo',tipo.value);
+    form.append('unidad',unidad.value);
+    axios({
+       method:'POST',
+       url:url,
+       responseType:'json',
+       data:form
+       
+   }).then(res=>{
+       console.log(res.data);
+       getAviso();
+       clearForm();
+       Swal.fire({
+           title:"Notifación!",
+           text: "Datos agregados correctamente",
+           icon: "success",
+           button:"Ok",
+       })
+   }).catch(error=>{
+       Swal.fire({
+           title:"Notifación!",
+           text: "Ocurrio un error",
+           icon: "warning",
+           button:"Ok",
+       })
+       console.log(error)
+   }) 
  
  }
 //EDIT
@@ -244,20 +281,39 @@ function editAviso(){
         console.log(res.data);
         getAviso();
         clearForm();
-        alert("Dato actualizado correctamente");
+        Swal.fire({
+            title:"Notifación!",
+            text: "Datos actualizados correctamente",
+            icon: "success",
+            button:"Ok",
+        })
     }).catch(error=>{
-      
-        alert("No se pudo actualizar");
+        Swal.fire({
+            title:"Notifación!",
+            text: "Ocurrio un error",
+            icon: "warning",
+            button:"Ok",
+        })
         console.log(error)
-    })  
+    }) 
  
  }
 //CONFIRM DELETE
-const confirmDelete = (id) => {
-    event.preventDefault();
-  
-    let res = confirm("¿Desea eliminar aviso?");
-    if (res) deleteAviso(id);
+const confirmDelete= async function (id) {
+      
+        const sweetConfirm = await Swal.fire({
+            title: 'Estás seguro de eliminar los datos?',
+            text: "No podrás reviertir esta acción !",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si, elimninar!',
+            cancelButtonText: "Cancelar",
+            closeOnConfirm: false,
+            closeOnCancel: false
+        });
+        if (sweetConfirm.isConfirmed) deleteAviso(id);
   }
 //DELETE
 function deleteAviso(id){
@@ -270,11 +326,21 @@ function deleteAviso(id){
         console.log(res.data);
          getAviso();
          clearForm();
-         alert("Datos eliminados correctamente");
+         Swal.fire({
+            title:"Notifación!",
+            text: "Datos eliminados correctamente",
+            icon: "success",
+            button:"Ok",
+        })
      }).catch(error=>{
        
-         console.log("No se eliminaron los datos"+error);
+         console.log("No se eliminaron los datos"+erro);
+         Swal.fire({
+            title:"Notifación!",
+            text: "Ocurrio un error",
+            icon: "warning",
+            button:"Ok",
+        })
      })
-     
  }
 

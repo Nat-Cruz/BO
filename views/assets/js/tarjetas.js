@@ -1,3 +1,4 @@
+
 //URL
 const url='http://10.30.0.28/BO/controller/consultasController.php?';
 const av =document.querySelector('#avisos');
@@ -15,7 +16,7 @@ function getAvisos(){
         responseType:'json' 
     }).then(res=>{
         av.innerHTML="";
-        div =res.data;
+       const div =res.data;
         console.log(res.data)
         div.forEach(key => {
              if(key.tipoArchivo=="imagen"){
@@ -35,7 +36,7 @@ function getAvisos(){
                                     
                                 </div>
                                 <div class="col-md-2 mt-5">
-                                <button type="submit" class="btn btn-success" onclick="autocomplete('${key.nombre}',
+                                <button type="submit" class="btn btn-success"  onclick="autocomplete('${key.nombre}',
                                 '${key.archivo}','${key.descripcion}','${key.fecha_inicio}','${key.fecha_fin}');" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fas fa-eye color-secondary" m-r-5></i> Ver</button>
                                 </div>
                             </div>    
@@ -79,7 +80,7 @@ function getMemu(){
         responseType:'json' 
     }).then(res=>{
         memu.innerHTML="";
-        div =res.data;
+       const div =res.data;
         console.log(res.data)
         div.forEach(key => {
              if(key.tipoArchivo=="imagen"){
@@ -155,7 +156,7 @@ function autocomplete(titulo,archivo,descripcion,fecha_inicio,fecha_fin){
                             <br><small id="fecha">Inicia : ${fecha_inicio} Finaliza : ${fecha_fin}</small></p>
                             <div class="form-group row">
                                 <div class="col-lg-8 ml-auto">
-                                    <button type="button" class="btn btn-success btn-lg" data-dismiss="modal">Close</button>                                                  
+                                    <button type="button" class="btn btn-success btn-lg" data-dismiss="modal">Cerrar</button>                                                  
                                 </div>
                                 </div>
                             </div>
@@ -187,7 +188,7 @@ function autocompleteArchivo(titulo,archivo,descripcion,fecha_inicio,fecha_fin){
                         </div>
                         <div class="form-group row">
                             <div class="col-lg-8 ml-auto">
-                                <button type="button" class="btn btn-success btn-lg" data-dismiss="modal">Close</button>                                                  
+                                <button type="button" class="btn btn-success btn-lg" data-dismiss="modal">Cerrar</button>                                                  
                             </div>
                         </div>
                     </div>

@@ -1,16 +1,16 @@
 <?php
 require_once '../modelo/modelAcceso.php';
+$obj= new modelAcceso();
 
-$mensaje= "";
 if(isset($_REQUEST['btn'])){
     session_start();// Sesión  
     
-    $obj= new modelAcceso();
-   
+  
         // Login
         $user = $_POST['usuario'];
         $pass = $_POST['clave'];
         $dato=$obj->login($user,$pass);
+        
             if(!empty($dato)){
                  $_SESSION['nivel'] = $dato[1];
             
@@ -31,7 +31,7 @@ if(isset($_REQUEST['btn'])){
                     header("Location:../views/avisos.php");
                     
                 }
-            
+                
             }else{
 		header("Location:../page-login.php");
 	 } 
@@ -41,4 +41,5 @@ if(isset($_REQUEST['btn'])){
     session_destroy();
     header("Location:../page-login.php"); 
 }
+
 ?>
